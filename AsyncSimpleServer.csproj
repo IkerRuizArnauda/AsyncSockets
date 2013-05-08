@@ -74,7 +74,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Server\Client\Client.cs" />
     <Compile Include="Server\Client\ClientHandler.cs" />
-    <Compile Include="Server\VskbServer.cs" />
+    <Compile Include="Server\AsyncSocketServer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

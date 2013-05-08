@@ -27,7 +27,7 @@ using AsyncSimpleServer.Logging;
 
 namespace AsyncSimpleServer.Server
 {
-    public class VskbServer
+    public class AsyncSocketServer
     {
         //Server Socket
         private Socket _serverSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
@@ -36,7 +36,7 @@ namespace AsyncSimpleServer.Server
         //Server Logger
         Logger Logger = LogManager.CreateLogger();
 
-        public VskbServer()
+        public AsyncSocketServer()
         {
             //Start the server
             StartServer();
@@ -53,7 +53,7 @@ namespace AsyncSimpleServer.Server
 
                 //If our server is correctly bound.
                 if(_serverSocket.IsBound)
-                    Logger.Info("Server is running and waiting for connections...");
+                    Logger.Info("is running and waiting for connections...");
 
                 //Start accepting connections.
                 _serverSocket.BeginAccept(new AsyncCallback(AcceptCallback), null);

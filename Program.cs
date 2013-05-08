@@ -36,7 +36,7 @@ namespace AsyncSimpleServer
         /// <summary>
         /// VisualKB Server instance.
         /// </summary>
-        public static VskbServer VskbServer;
+        public static AsyncSocketServer Server;
 
         /// <summary>
         /// VisualKB Logger Instance
@@ -62,10 +62,10 @@ namespace AsyncSimpleServer
             // Initialize Logging facility.
             InitLoggers();
             
-            Logger.Info("VisualKB Server v{0} warming-up...", Assembly.GetExecutingAssembly().GetName().Version);
+            Logger.Info("AsyncSocketServer v{0} warming-up...", Assembly.GetExecutingAssembly().GetName().Version);
 
             // Initialize Server
-            StartVskbServer();
+            StartServer();
 
             //User input, this keeps the server running unless the user hits the escape key.
             //Todo: Handle commands.
@@ -122,7 +122,7 @@ namespace AsyncSimpleServer
             var ex = e.ExceptionObject as Exception;
 
             if (e.IsTerminating)
-                Logger.FatalException(ex, "VisualKB server terminating because of unhandled exception.");
+                Logger.FatalException(ex, "Async server terminating because of unhandled exception.");
             else
                 Logger.ErrorException(ex, "Caught unhandled exception.");
 
@@ -131,11 +131,12 @@ namespace AsyncSimpleServer
         #endregion
 
         #region StartServer
-        public static bool StartVskbServer()
+        public static bool StartServer()
         {
-            if (VskbServer != null) return false;
+            if (Server != null) 
+                return false;
 
-            VskbServer = new VskbServer();
+            Server = new AsyncSocketServer();
             return true;
         }
         #endregion
